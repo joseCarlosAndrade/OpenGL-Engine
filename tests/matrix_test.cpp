@@ -5,8 +5,8 @@
 int main() {
     float a[2] = {1, 2};
     float b[3] = { 5, 5, 5};
-    UniversalMatrix4x4f mat(4, 4);
-    UniversalMatrix4x4f mat_b(4, 4);
+    GenMatrix4x4f mat(4, 4);
+    GenMatrix4x4f mat_b(4, 4);
     mat(0, 3) = 1;
     // std::cout << mat. << std::endl;
     mat.setMatrix(a, 2);
@@ -14,13 +14,23 @@ int main() {
     mat.printM();
     mat_b.printM();
 
-    UniversalMatrix4x4f mat_sum = mat + mat_b;
+    GenMatrix4x4f mat_sum = mat + mat_b;
     mat_sum.printM();
-    UniversalMatrix4x4f point(4, 1);
+    GenMatrix4x4f point(4, 1);
     point(0, 0) = 1;
     point(1, 0) = 3;
     point(2, 0) = 2;
     point.print();
-    UniversalMatrix4x4f mat_mult = mat*point;
+    GenMatrix4x4f mat_mult = mat*mat;
+    // std::cout << "mat mult r c: " << mat_mult.getRows() << " " << mat_mult.getColumns() << std::endl;
+    // mat_mult = mat_mult*point;
+    mat.print();
     mat_mult.print();
+
+    MatrixIdentity identity(3);
+    MatrixRotation rotation(4);
+
+    identity.print();
+    rotation.print();
+
 }
