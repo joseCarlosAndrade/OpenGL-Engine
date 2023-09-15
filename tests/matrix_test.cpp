@@ -28,9 +28,11 @@ int main() {
     mat_mult.print();
 
     MatrixIdentity identity(3);
-    MatrixRotation rotation(4);
+    MatrixRotationX rotation((2*3.1415), 4);
 
     identity.print();
+
+    std::cout << "rotation: " << std::endl;
     rotation.print();
 
 }

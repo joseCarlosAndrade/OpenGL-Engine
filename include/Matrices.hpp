@@ -1,3 +1,6 @@
+#ifndef MATRICES_H
+#define MATRICES_H
+
 #include<iostream>
 #include<cstdlib>
 #include<assert.h>
@@ -195,7 +198,7 @@ class GenRotMat : public GenMatrix4x4f {
     protected:
         float ang;
     public:
-        GenRotMat(unsigned int size=4, float angle) :  ang(angle) {
+        GenRotMat(float angle=0, unsigned int size=4) :  ang(angle) {
             this->resize(size, size);
 
             for (int i = 0; i < rows; i++) {
@@ -206,7 +209,9 @@ class GenRotMat : public GenMatrix4x4f {
 };
 
 class MatrixRotationX : public GenRotMat {
+    
     public:
+        MatrixRotationX(float angle=0, unsigned int size=4) : GenRotMat(angle, size) {rot(ang);}
         void rot(float ang) {
             float s = sin(ang);
             float c = cos(ang);
@@ -222,6 +227,8 @@ class MatrixRotationX : public GenRotMat {
 
 class MatrixRotationY : public GenRotMat {
     public:
+        MatrixRotationY(float angle=0, unsigned int size=4) : GenRotMat(size, angle) {rot(ang);}
+
         void rot(float ang) {
             float s = sin(ang);
             float c = cos(ang);
@@ -237,6 +244,7 @@ class MatrixRotationY : public GenRotMat {
 
 class MatrixRotationZ : public GenRotMat {
     public:
+        MatrixRotationZ(float angle=0, unsigned int size=4) : GenRotMat(size, angle) {rot(ang);}
         void rot(float ang) {
             float s = sin(ang);
             float c = cos(ang);
@@ -286,3 +294,4 @@ class Matrix : public GenMatrix4x4f {
 
 };
 
+#endif
